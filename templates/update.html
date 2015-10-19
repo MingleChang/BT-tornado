@@ -1,0 +1,14 @@
+{%extends 'base.html'%}  
+{%block title%}  
+Update
+{%end%}  
+{%block content%} 
+<center>
+<h1>上传文件</h1>
+<form action="/update" method="post" enctype="multipart/form-data">
+	{% raw xsrf_form_html() %}
+	<input type='file' name='file'/>
+	<button type="submit">上传</button> 
+</form>
+</center>
+{%end%} 

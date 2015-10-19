@@ -1,0 +1,16 @@
+{%extends 'base.html'%}  
+{%block title%}  
+Search
+{%end%}  
+{%block content%} 
+<h1>搜索</h2>
+<form action="/search" method="get">
+	<input type="text" name="searchkey" placeholder="输入关键字" style="width:300px">
+	<button type="submit">搜索</button> 
+</form>
+<ol>
+{% for file in files %}
+<li><a href="download/{{file['fileid']}}" target="_blank">{{file['title']}}</a></li>
+{% end %}
+</ol>
+{%end%} 
