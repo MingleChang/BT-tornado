@@ -3,5 +3,20 @@
 Detail
 {%end%}  
 {%block content%} 
-<p>Detail</p>
+<h1>搜索</h2>
+<form action="/search" method="get">
+	<input type="text" name="searchkey" placeholder="输入关键字" style="width:300px">
+	<button type="submit">搜索</button> 
+</form>
+
+<h2>{{file['title']}}</h2>
+<input type='button' value='Download' onclick="window.open('../download/{{file['fileid']}}')">
+<h4>文件列表</h4>
+<ol>
+{% for subfile in file['files'] %}
+<li>
+	<p>{{subfile['path']}}</p><p>{{subfile['length']}}</p>
+</li>
+{% end %}
+</ol>
 {%end%} 

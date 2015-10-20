@@ -10,7 +10,10 @@ Search
 </form>
 <ol>
 {% for file in files %}
-<li><a href="download/{{file['fileid']}}" target="_blank">{{file['title']}}</a></li>
+<li>
+	<a href="detail/{{file['fileid']}}" target="_blank">{{file['title']}}</a>
+	<p>{{file['files'][0]['length']}}</p>
+</li>
 {% end %}
 </ol>
 {%end%} 

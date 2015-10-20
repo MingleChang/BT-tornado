@@ -3,9 +3,9 @@
 
 from handlers.base import BaseHandler
 from models.models import File
-from sqlalchemy.orm import class_mapper
-import json
-
+import os.path
+from settings import STATIC_PATH
+from common.btcode import BTCode
 class SearchHandler(BaseHandler):
 	def  get(self):
 		searchkey=self.get_argument('searchkey','')
@@ -25,9 +25,9 @@ class SearchHandler(BaseHandler):
 		files=self.db.query(File.fileid,File.title,File.path,File.create).filter(File.title.like(u"%"+searchkey+"%"))
 		arr=[]
 		for file in files:
-			dic={}
+			filepath=os.path.join(STATIC_PATH,file[2])
+			dic=BTCode.decodepath(filepath)
 			dic['fileid']=file[0]
 			dic['title']=file[1]
-			dic['path']=file[2]
 			arr.append(dic)
 		self.render('search.html',files=arr)
