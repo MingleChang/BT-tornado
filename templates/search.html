@@ -2,12 +2,15 @@
 {%block title%}  
 Search
 {%end%}  
-{%block content%} 
+
+{%block header%}  
 <h1>搜索</h2>
 <form action="/search" method="get">
 	<input type="text" name="searchkey" placeholder="输入关键字" style="width:300px">
 	<button type="submit">搜索</button> 
 </form>
+{%end%}  
+{%block content%} 
 <ol>
 {% for file in files %}
 <li>
